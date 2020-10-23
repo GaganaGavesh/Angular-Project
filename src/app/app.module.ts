@@ -36,10 +36,7 @@ import { LoggingService } from './service-dependency-injection/logging.service';
 import { ServicesDependencyInjectionAssignmentComponent } from './services-dependency-injection-assignment/services-dependency-injection-assignment.component';
 import { ActiveUsersComponent } from './services-dependency-injection-assignment/active-users/active-users.component';
 import { InactiveUsersComponent } from './services-dependency-injection-assignment/inactive-users/inactive-users.component';
-import { UserService } from './services-dependency-injection-assignment/users.service';
-
-
-
+import { CounterService } from './services-dependency-injection-assignment/counter.service';
 //aluthen add karana component serama module eke register karanna ona ethakota thama angular eka danaganne 
 //ehema component ekak thiyanawa kiyala
 @NgModule({
@@ -82,7 +79,8 @@ import { UserService } from './services-dependency-injection-assignment/users.se
     BrowserModule,
     FormsModule
   ],
-  providers: [AccountsService, LoggingService, UserService],//service ekakata service ekak inject karanawa
+  providers: [AccountsService, LoggingService, CounterService],//service ekakata service ekak inject karanawa nam
+  //inject karana service eka aniwa appmodule eke tyenna onaa
   bootstrap: [AppComponent]
 })
 export class AppModule { }
