@@ -39,7 +39,8 @@ export class RecipesListComponent implements OnInit {
 
   recipes: Recipe[] = [];
 
-  @Output() recipeWasSelected = new EventEmitter<Recipe>();
+  //event emitter use karanawa nam
+  //@Output() recipeWasSelected = new EventEmitter<Recipe>();
 
   constructor(private recipeService: RecipeService) { }
 
@@ -47,8 +48,9 @@ export class RecipesListComponent implements OnInit {
     this.recipes = this.recipeService.getRecipes();
   }
 
-  onRecipeSelrcted(recipe: Recipe){
-    this.recipeWasSelected.emit(recipe);
-  }
+  //event emitter use karana coee eka
+  // onRecipeSelrcted(recipe: Recipe){
+  //   this.recipeWasSelected.emit(recipe);
+  // }
 
 }

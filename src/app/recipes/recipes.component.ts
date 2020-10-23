@@ -13,9 +13,14 @@ export class RecipesComponent implements OnInit {
 
   selectedRecipe: Recipe;
 
-  constructor() { }
+  //recipe ekak select welada kiyala licten karan inna ona 
+  //enisa recipe service eka inject karanawa
+  constructor(private recipeService: RecipeService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.recipeService.recipeSelected.subscribe((recipe: Recipe)=>{ this.selectedRecipe = recipe});
+    //ES6 arrow function eken karanne 
+    //recipe service eken emit karana recipe eka me component ekta ganna eka
   }
 
 }
