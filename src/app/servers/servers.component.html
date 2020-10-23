@@ -1,0 +1,23 @@
+<p>servers works!</p>
+
+<label>Server Name</label>
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)"> -->
+<input type="text" class="form-control" [(ngModel)]="serverName" >
+<!-- <p>{{serverName}}</p> -->
+<br><br>
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)= "onCreateServer()">Add Server</button>
+<p *ngIf="serverExist" class="existed">Server name "{{ serverName }}" is existed enter a new one</p>
+<!-- <p *ngIf="serverCreated">Server was created ! Server name is {{ serverName }}</p>
+<p *ngIf="!serverCreated">No server was created</p> -->
+
+<p *ngIf="serverCreated; else noServer ">Server was created ! Server name is {{ serverName }}</p>
+<ng-template #noServer>
+    <p>No server was created</p>
+</ng-template>
+<!-- #noServer kiyanne  mark ekak DOM eke , me marker eke local reference eka thama
+    ng-template eka athule thiyenne -->
+<app-server *ngFor= "let ser of servers"></app-server>
+<!-- servers array eke tyna servers name tika for each ekakin app-server ekata render wenawa -->
+
+
+ 

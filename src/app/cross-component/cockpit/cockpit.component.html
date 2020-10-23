@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-xs-12">
+      <p>Add new Servers or blueprints!</p>
+      <label>Server Name</label>
+      <!-- <input type="text" class="form-control" [(ngModel)]="newServerName"> Meka 2 way data binding ekak newServerName kiyana eka 
+      html eken hari .ts eken hari ona ekakin update wenna pluwan-->
+      <input 
+      type="text" 
+      class="form-control"
+      #serverNameInput>
+      <!-- #serverNameInput local reference ekak onama element ekakata meka danna pluwan,dana element eke tyna data ganna pluwan 
+      HTML template eke witharai meka wada karanne-->
+      <label>Server Content</label>
+      <!-- <input type="text" class="form-control" [(ngModel)]="newServerContent"> -->
+      <input 
+      type="text" 
+      class="form-control" 
+      #serverContentInput>
+      <br>
+      <button
+        class="btn btn-primary"
+        (click)="onAddServer(serverNameInput)">Add Server</button>
+      <button
+        class="btn btn-primary"
+        (click)="onAddBlueprint(serverNameInput)">Add Server Blueprint</button>
+    </div>
+  </div>

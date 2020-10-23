@@ -1,0 +1,8 @@
+<p [ngStyle]="{backgroundColor: getColor()}"
+   [ngClass]="{online: serverStatus === 'Online', offline: serverStatus === 'Offline'}">
+   Server with ID {{ serverId }} is {{ getServerStatus() }}</p>
+<!-- methana directives walata property bind karaddi ekata pass karanne java script object ekak
+eke key value pairs thama thiyenne [ngClass] ekee key value pairs widiyata dala tynne class eke nama
+: e class eka apply wenna onna condition eka or true false kiyala kelinma dala tynne-->
+
+<!-- <p>Server with ID {{serverId}} is {{ getServerStatus() }}</p> -->           

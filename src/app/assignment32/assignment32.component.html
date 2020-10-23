@@ -1,0 +1,12 @@
+<p>assignment32 works!</p>
+<!-- <button class="btn btn-primary" (click)="showSecret = !showSecret">Display Details</button> -->
+<button class="btn btn-primary" (click)="onToggleDetails()">Display Details</button>
+<p *ngIf="showSecret">Secret data is showing</p>
+<div 
+    *ngFor="let item of log; let y = index"
+    [ngStyle] = "{backgroundColor: y >= 4 ? 'blue' : 'transpatent'}"
+    [ngClass] = "{whiteNumbers : y >= 4}">
+    {{ item }}
+</div>
+
+<!-- methana index eken current iteration eke index eka ganna pluwan "index" kiyanne reserved keyword ekak -->

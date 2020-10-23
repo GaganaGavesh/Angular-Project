@@ -1,0 +1,20 @@
+<!-- <p>recipes-list works!</p> -->
+<div class="row">
+    <!-- recipe eke clo-md-5 kiyana column eke row eka thama me tynne -->
+    <div class="col-xs-12">
+        <button class="btn btn-success">New recipe</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- Single recipe item ekak clickable wenna ona eka nisa thama a tag eka athule eka danne -->
+        <hr>
+        <app-recipes-item 
+        *ngFor="let recipeElement of recipes" 
+        [recipe]="recipeElement" 
+        (recipeSelected)="onRecipeSelrcted(recipeElement)"></app-recipes-item>
+    </div>
+    
+</div>
+

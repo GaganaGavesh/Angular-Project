@@ -1,0 +1,10 @@
+<br>
+&nbsp;
+<button class="btn btn-success" [disabled]="beforeClicked == false" (click)="onStartGame()">Start Game</button>
+&nbsp;
+<button 
+class="btn btn-danger" 
+(click)="onPauseGame()" 
+*ngIf="buttonStatus === true" 
+[disabled]="beforeClicked == true">Pause Game</button>
+<button class="btn btn-danger" (click)="onStartGame()" *ngIf="buttonStatus === false">Resume Game</button>

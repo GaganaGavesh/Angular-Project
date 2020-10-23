@@ -1,0 +1,26 @@
+<div class="container">
+    <!--  $event eken thama event eka gana data tika ewanne-->
+    <!-- cockpit eken emit karana data tina enawa serverCreated,bluprintCreated kiyana event dekata
+    hariyata click event ekaka data tika gannawa wage
+  e event data pass karanawa .ts eke tyna method ekakata, ewa ethakota use karanna pluwan-->
+    <app-cockpit 
+    (serverCreated)="onServerAdded($event)"
+    (bluprintCreated)="onBlueprintAdded($event)"
+    ></app-cockpit>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-danger" (click)="onDestroyFirst()">Destroy Servers</button>
+        <app-server-element 
+        *ngFor="let serverElement of serverElements"
+        [element]="serverElement">
+        <p>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+        </p>
+        <!-- methanama serama data danawa nam api @Input danna ona ne -->
+        </app-server-element>
+      </div>
+    </div>
+</div>
+  
