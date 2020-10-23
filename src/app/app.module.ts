@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { ServerComponent } from './server/server.component';
-import { ServersComponent } from './servers/servers.component';
+//for server
+//import { ServerComponent } from './server/server.component';
+//import { ServersComponent } from './servers/servers.component';
 import { Assignmet24Component } from './assignmet24/assignmet24.component';
 import { Assignment32Component } from './assignment32/assignment32.component';
 import { HeaderComponent } from './header/header.component';
@@ -28,16 +29,27 @@ import { NgclassandngstylerecapComponent } from './ngclassandngstylerecap/ngclas
 import { BetterHighlightDirective } from './ngforandnfifrecap/better-highlight/better-highlight.directive';
 import { UnlessDirective } from './ngforandnfifrecap/unless.directive';
 import { DropdownDirective } from './shared/dropdown.directive';
-import { ServiceDependencyInjectionComponent } from './service-dependency-injection/service-dependency-injection.component';
-import { AccountComponent } from './service-dependency-injection/account/account.component';
 import { NewAccountComponent } from './service-dependency-injection/new-account/new-account.component';
-import { AccountsService } from './service-dependency-injection/accounts.service';
-import { LoggingService } from './service-dependency-injection/logging.service';
+import { AccountComponent } from './service-dependency-injection/account/account.component';
 import { ServicesDependencyInjectionAssignmentComponent } from './services-dependency-injection-assignment/services-dependency-injection-assignment.component';
 import { ActiveUsersComponent } from './services-dependency-injection-assignment/active-users/active-users.component';
 import { InactiveUsersComponent } from './services-dependency-injection-assignment/inactive-users/inactive-users.component';
+import { RoutingStartComponent } from './routing-start/routing-start.component';
+import { HomeComponent } from './routing-start/home/home.component';
+import { UsersComponent } from './routing-start/users/users.component';
+import { EditServerComponent } from './routing-start/servers/edit-server/edit-server.component';
+import { UserComponent } from './routing-start/users/user/user.component';
+import { ServiceDependencyInjectionComponent } from './service-dependency-injection/service-dependency-injection.component';
+
+//routing start
+import { ServersComponent } from './routing-start/servers/servers.component';
+import { ServerComponent } from './routing-start/servers/server/server.component';
+
+import { AccountsService } from './service-dependency-injection/accounts.service';
+import { LoggingService } from './service-dependency-injection/logging.service';
 import { CounterService } from './services-dependency-injection-assignment/counter.service';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { ServersService } from './routing-start/servers/servers.service';
 //aluthen add karana component serama module eke register karanna ona ethakota thama angular eka danaganne 
 //ehema component ekak thiyanawa kiyala
 @NgModule({
@@ -72,7 +84,12 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
     NewAccountComponent,
     ServicesDependencyInjectionAssignmentComponent,
     ActiveUsersComponent,
-    InactiveUsersComponent
+    InactiveUsersComponent,
+    RoutingStartComponent,
+    HomeComponent,
+    UsersComponent,
+    EditServerComponent,
+    UserComponent
 
     
   ],
@@ -80,7 +97,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
     BrowserModule,
     FormsModule
   ],
-  providers: [AccountsService, LoggingService, CounterService, ShoppingListService],//service ekakata service ekak inject karanawa nam
+  providers: [AccountsService, LoggingService, CounterService, ShoppingListService, ServersService],//service ekakata service ekak inject karanawa nam
   //inject karana service eka aniwa appmodule eke tyenna onaa
   bootstrap: [AppComponent]
 })
