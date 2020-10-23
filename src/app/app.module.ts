@@ -37,6 +37,7 @@ import { ServicesDependencyInjectionAssignmentComponent } from './services-depen
 import { ActiveUsersComponent } from './services-dependency-injection-assignment/active-users/active-users.component';
 import { InactiveUsersComponent } from './services-dependency-injection-assignment/inactive-users/inactive-users.component';
 import { CounterService } from './services-dependency-injection-assignment/counter.service';
+import { ShoppingListService } from './shopping-list/shopping-list.service';
 //aluthen add karana component serama module eke register karanna ona ethakota thama angular eka danaganne 
 //ehema component ekak thiyanawa kiyala
 @NgModule({
@@ -79,7 +80,7 @@ import { CounterService } from './services-dependency-injection-assignment/count
     BrowserModule,
     FormsModule
   ],
-  providers: [AccountsService, LoggingService, CounterService],//service ekakata service ekak inject karanawa nam
+  providers: [AccountsService, LoggingService, CounterService, ShoppingListService],//service ekakata service ekak inject karanawa nam
   //inject karana service eka aniwa appmodule eke tyenna onaa
   bootstrap: [AppComponent]
 })
