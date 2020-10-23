@@ -29,7 +29,7 @@ export class ShoppingListComponent implements OnInit {
       (ingredients: Ingredient[])=>{
         this.ingredients = ingredients;
       }
-    );//aluthen ingredients add karana ewa update karanawa
+    );//aluthen ingredients add karanas ewa update karanawa
   }
   //before shopping list servive added
   // onIngredientAdded(ingredient: Ingredient){
