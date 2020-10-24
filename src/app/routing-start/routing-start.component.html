@@ -2,9 +2,18 @@
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><a href="#">Home</a></li>
-          <li role="presentation"><a href="#">Servers</a></li>
-          <li role="presentation"><a href="#">Users</a></li>
+          <li role="presentation" class="active"><a routerLink="/">Home</a></li>
+          <li role="presentation"><a routerLink="/servers">Servers</a></li>
+          <li role="presentation"><a [routerLink]="['/users']">Users</a></li>
+          <!-- Aththatama methana wenne  routerLink eka eliment eke click eka catch karagannawa
+          default refresh wena eka prevent karanawa(aluth request ekak send karana eka)
+          routerlink ekata pass karala tyna element eka routes wala tyeda balanawa, fitting rout ekak tyenawa nam
+          url ekath wenas karala eka router-outlet eke render karnawa-->
+
+          <!-- <li role="presentation"><a href="/users">Users</a></li> MEHEMA DAMMAMA WENNE ADDRESS BAR EKE LINK EKA UPDATE UNATA
+          APP EKAMA REFRESH WENAWA ETHAKOTA APP EKE CURRENT STATE EKA LOST WENAWA, EKA AULAK, E NISA THAMA routerLink="" KIYANA EKA 
+          DILA TYNNEH-->
+          <!-- [] property binding danawa nam "" athule string ekak danna ona aniwa."'/home'" -->
         </ul>
       </div>
     </div>
