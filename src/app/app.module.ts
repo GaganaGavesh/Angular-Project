@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 //for server
@@ -50,8 +51,18 @@ import { LoggingService } from './service-dependency-injection/logging.service';
 import { CounterService } from './services-dependency-injection-assignment/counter.service';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { ServersService } from './routing-start/servers/servers.service';
+
 //aluthen add karana component serama module eke register karanna ona ethakota thama angular eka danaganne 
 //ehema component ekak thiyanawa kiyala
+
+//routes danne approutes kiyana const ekakata,eka array ekak'rout object thama tyagena innnee
+const appRouts: Routes=[
+  {path:'',component: HomeComponent},//localhost:4200/
+  {path:'servers',component: ServersComponent},//localhost:4200/servers
+  {path:'users',component: UsersComponent},//localhost:4200/users
+];//mehema nikannma dammoth angular eka routes use karanne ne ignore karanawa
+//routes register karanna ona imports wala
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,7 +106,12 @@ import { ServersService } from './routing-start/servers/servers.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRouts)
+    //routing functionality eka add kalata thama eka register wela ne
+    //eka karanne forRoot eken.mulu app ekatama route enable wenawa ethakota
+    //forRoot eka allow karanawa routes register karanna
+    //api hadapu constat appRouts eka meke register kalama app eka purama e routes wada karawanna pluwan
   ],
   providers: [AccountsService, LoggingService, CounterService, ShoppingListService, ServersService],//service ekakata service ekak inject karanawa nam
   //inject karana service eka aniwa appmodule eke tyenna onaa
