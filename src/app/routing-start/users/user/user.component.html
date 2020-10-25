@@ -1,2 +1,6 @@
-<p>User with ID _ID_ loaded.</p>
-<p>User name is _NAME_</p>
+<p>User with ID {{ user.id }} loaded.</p>
+<p>User name is {{ user.name }}</p>
+<hr>
+<a [routerLink]="['/users',12,'Annah']">Load annah 12</a>
+<!-- api mehema witharak dammama me component ekam indiddi me data tika reload karanne ne 
+wena ekaka indala awoth meka click kalama eka load wenawa-->
