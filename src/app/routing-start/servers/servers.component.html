@@ -8,7 +8,7 @@
         eka fragment ekai fragment kiyala dammama tynne
         -->
         <a
-          [routerLink]="['/servers',5,'edit']"
+          [routerLink]="['/servers', server.id]"
           [queryParams]="{allowEdit: '1'}"
           fragment="loading"
           href="#"
@@ -27,7 +27,7 @@
        <button class="btn btn-primary" (click)="onReload()">Reload page</button>
       <app-edit-server></app-edit-server>
       <hr>
-      <app-server></app-server>
+      <!-- <app-server></app-server> -->
     </div>
   </div>
   
