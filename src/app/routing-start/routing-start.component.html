@@ -2,9 +2,28 @@
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><a routerLink="/">Home</a></li>
-          <li role="presentation"><a routerLink="/servers">Servers</a></li>
-          <li role="presentation"><a [routerLink]="['/users']">Users</a></li>
+          <!-- class active kiyanne e li eka active kiyala pennana ekata
+           routerLinkActive ekata ona bootsrtap class ekak danna pluwan e router link eka active
+          welawata e class eka apply wenawa-->
+          <!--[routerLinkActiveOptions]="{exact: true}" kiyala danne localHost:4200 kiyana eka 
+          hama welema tyanawa e nisa mona route eka wada kalath e link eka active kiyala watenawa 
+          eka nathi karanna thama  {exact: true} kiyala object eka dala tynne-->
+          <li 
+          role="presentation" 
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/">Home</a>
+          </li>
+          <li 
+          role="presentation" 
+          routerLinkActive="active">
+          <a routerLink="/servers">Servers</a>
+          </li>
+          <li 
+          role="presentation" 
+          routerLinkActive="active">
+          <a [routerLink]="['/users']">Users</a>
+          </li>
           <!-- Aththatama methana wenne  routerLink eka eliment eke click eka catch karagannawa
           default refresh wena eka prevent karanawa(aluth request ekak send karana eka)
           routerlink ekata pass karala tyna element eka routes wala tyeda balanawa, fitting rout ekak tyenawa nam
