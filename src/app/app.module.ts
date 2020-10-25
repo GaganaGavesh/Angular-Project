@@ -60,6 +60,8 @@ const appRouts: Routes=[
   {path:'',component: HomeComponent},//localhost:4200/
   {path:'servers',component: ServersComponent},//localhost:4200/servers
   {path:'users',component: UsersComponent},//localhost:4200/users
+  {path:'users/:id/:name',component: UserComponent},
+  {path:'servers/:id/edit',component: EditServerComponent},//localhost:4200/users/something //:kiyanne dynamic ekak
 ];//mehema nikannma dammoth angular eka routes use karanne ne ignore karanawa
 //routes register karanna ona imports wala
 
