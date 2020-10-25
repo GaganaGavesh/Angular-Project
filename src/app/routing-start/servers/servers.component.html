@@ -1,7 +1,16 @@
 <div class="row">
     <div class="col-xs-12 col-sm-4">
       <div class="list-group">
+        <!-- routerLink directive eke boundable property ekak thama "queryParams" kinyanne
+        http://localhost:4200/servers/5/edit
+        http://localhost:4200/servers/5/edit?allowEdit=1
+        http://localhost:4200/servers/5/edit?allowEdit=1#loading
+        eka fragment ekai fragment kiyala dammama tynne
+        -->
         <a
+          [routerLink]="['/servers',5,'edit']"
+          [queryParams]="{allowEdit: '1'}"
+          fragment="loading"
           href="#"
           class="list-group-item"
           *ngFor="let server of servers">
@@ -10,6 +19,12 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-4">
+      <!-- servers ./servers (relative route)kiyala witharak dammama localHost:servers/servers kiyana url ekata thama yanne
+       /servers absolute path eka dammama current directry ekatama  yanne
+      ../servers rout ekak passata ghilla me route eka load wenawa-->
+      <!-- <a routerLink="./servers">Reload page</a> -->
+
+       <button class="btn btn-primary" (click)="onReload()">Reload page</button>
       <app-edit-server></app-edit-server>
       <hr>
       <app-server></app-server>
