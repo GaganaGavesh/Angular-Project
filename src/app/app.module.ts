@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 //for server
@@ -54,7 +54,7 @@ import { CounterService } from './services-dependency-injection-assignment/count
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { ServersService } from './routing-start/servers/servers.service';
 
-
+import { AppRoutingModule } from './app-routing.module';
 //aluthen add karana component serama module eke register karanna ona ethakota thama angular eka danaganne 
 //ehema component ekak thiyanawa kiyala
 
@@ -124,7 +124,8 @@ const appRouts: Routes=[
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRouts)
+    AppRoutingModule
+    //RouterModule.forRoot(appRouts)//ain kala routes tika wena ekakata genichcha nisa
     //routing functionality eka add kalata thama eka register wela ne
     //eka karanne forRoot eken.mulu app ekatama route enable wenawa ethakota
     //forRoot eka allow karanawa routes register karanna
