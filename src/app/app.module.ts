@@ -53,6 +53,8 @@ import { LoggingService } from './service-dependency-injection/logging.service';
 import { CounterService } from './services-dependency-injection-assignment/counter.service';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { ServersService } from './routing-start/servers/servers.service';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 
 import { AppRoutingModule } from './app-routing.module';
 //aluthen add karana component serama module eke register karanna ona ethakota thama angular eka danaganne 
@@ -131,7 +133,14 @@ const appRouts: Routes=[
     //forRoot eka allow karanawa routes register karanna
     //api hadapu constat appRouts eka meke register kalama app eka purama e routes wada karawanna pluwan
   ],
-  providers: [AccountsService, LoggingService, CounterService, ShoppingListService, ServersService],//service ekakata service ekak inject karanawa nam
+  providers: [
+    AccountsService, 
+    LoggingService, 
+    CounterService, 
+    ShoppingListService, 
+    ServersService,
+    AuthService,
+    AuthGuard],//service ekakata service ekak inject karanawa nam
   //inject karana service eka aniwa appmodule eke tyenna onaa
   bootstrap: [AppComponent]
 })

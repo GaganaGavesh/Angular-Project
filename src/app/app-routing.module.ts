@@ -8,11 +8,12 @@ import { ServersComponent } from './routing-start/servers/servers.component';
 import { ServerComponent } from './routing-start/servers/server/server.component';
 import { EditServerComponent } from './routing-start/servers/edit-server/edit-server.component';
 import { HomeComponent } from './routing-start/home/home.component';
+import { AuthGuard } from './auth-guard.service';
 
 const appRouts: Routes=[
     {path:'',component: HomeComponent},//localhost:4200/
     //main route eken yana ewa tye nam ewa children routes eidiyata danna pluwan
-    {path:'servers',component: ServersComponent, children:[
+    {path:'servers', canActivate: [AuthGuard],component: ServersComponent, children:[
       {path:':id/edit',component: EditServerComponent},
       {path:':id',component: ServerComponent}//children routes load karanna wenama 
       //<router-outlet></router-outlet>ekak ona
