@@ -13,7 +13,11 @@ import { AuthGuard } from './auth-guard.service';
 const appRouts: Routes=[
     {path:'',component: HomeComponent},//localhost:4200/
     //main route eken yana ewa tye nam ewa children routes eidiyata danna pluwan
-    {path:'servers', canActivate: [AuthGuard],component: ServersComponent, children:[
+    {path:'servers', 
+    //canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    component: ServersComponent, 
+    children:[
       {path:':id/edit',component: EditServerComponent},
       {path:':id',component: ServerComponent}//children routes load karanna wenama 
       //<router-outlet></router-outlet>ekak ona
