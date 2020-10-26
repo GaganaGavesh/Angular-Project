@@ -14,8 +14,8 @@ const appRouts: Routes=[
     {path:'',component: HomeComponent},//localhost:4200/
     //main route eken yana ewa tye nam ewa children routes eidiyata danna pluwan
     {path:'servers', 
-    //canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
+    //canActivate: [AuthGuard],//meka child routes walata danawa nam e dana eka witharak protect wenawa gurd class eka ekata wada karanawa
+    canActivateChild: [AuthGuard],//child routes witharai protect wenne
     component: ServersComponent, 
     children:[
       {path:':id/edit',component: EditServerComponent},
