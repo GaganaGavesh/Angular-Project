@@ -41,6 +41,8 @@ import { UsersComponent } from './routing-start/users/users.component';
 import { EditServerComponent } from './routing-start/servers/edit-server/edit-server.component';
 import { UserComponent } from './routing-start/users/user/user.component';
 import { ServiceDependencyInjectionComponent } from './service-dependency-injection/service-dependency-injection.component';
+import { PageNotFoundComponent } from './routing-start/page-not-found/page-not-found.component';
+
 
 //routing start
 import { ServersComponent } from './routing-start/servers/servers.component';
@@ -51,6 +53,7 @@ import { LoggingService } from './service-dependency-injection/logging.service';
 import { CounterService } from './services-dependency-injection-assignment/counter.service';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { ServersService } from './routing-start/servers/servers.service';
+
 
 //aluthen add karana component serama module eke register karanna ona ethakota thama angular eka danaganne 
 //ehema component ekak thiyanawa kiyala
@@ -69,6 +72,10 @@ const appRouts: Routes=[
   ]},//localhost:4200/users
   //{path:'users/:id/:name',component: UserComponent},
   //localhost:4200/users/something //:kiyanne dynamic ekak
+  {path:'not-found',component: PageNotFoundComponent},
+  {path:'**', redirectTo: '/not-found'},//component ekak load karanne nathuwa route ekakata re direct karanawa
+  // ** dammama all false routes allagannnawa ewa not found ekata redirect karanawa
+  //me route eka aniw antimatama thama enna ona//udinma dala thibboth meka issella run wela wena eka page ekakatawath yanna bari wenawa
 ];//mehema nikannma dammoth angular eka routes use karanne ne ignore karanawa
 //routes register karanna ona imports wala
 
@@ -109,7 +116,8 @@ const appRouts: Routes=[
     HomeComponent,
     UsersComponent,
     EditServerComponent,
-    UserComponent
+    UserComponent,
+    PageNotFoundComponent
 
     
   ],
