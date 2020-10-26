@@ -9,7 +9,7 @@
         -->
         <a
           [routerLink]="['/servers', server.id]"
-          [queryParams]="{allowEdit: '1'}"
+          [queryParams]="{allowEdit: server.id === 3 ? '1' : '0'}"
           fragment="loading"
           href="#"
           class="list-group-item"
@@ -23,10 +23,11 @@
        /servers absolute path eka dammama current directry ekatama  yanne
       ../servers rout ekak passata ghilla me route eka load wenawa-->
       <!-- <a routerLink="./servers">Reload page</a> -->
-
-       <button class="btn btn-primary" (click)="onReload()">Reload page</button>
+      <router-outlet></router-outlet>
+      <!-- child route tika load wenne me router outlet ekens -->
+       <!-- <button class="btn btn-primary" (click)="onReload()">Reload page</button>
       <app-edit-server></app-edit-server>
-      <hr>
+      <hr> -->
       <!-- <app-server></app-server> -->
     </div>
   </div>

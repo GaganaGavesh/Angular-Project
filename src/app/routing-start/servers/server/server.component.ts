@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ServersService } from '../servers.service';
 
 @Component({
@@ -10,7 +10,10 @@ import { ServersService } from '../servers.service';
 export class ServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
 
-  constructor(private serversService: ServersService, private route: ActivatedRoute) { }
+  constructor(
+    private serversService: ServersService, 
+    private route: ActivatedRoute,
+    private router: Router) { }//mokak hari route ekakata navigate karanawa nam Router eka thama ganne
 
   ngOnInit() {
     //url eke tyna hama ekama string, e nisa apata numbers ganna ona nam ewa cast karanna ona 
@@ -26,4 +29,8 @@ export class ServerComponent implements OnInit {
 
   }
 
+  onEdit(){
+    //this.router.navigate(['/servers',this.server.id,'edit']);//mekath hari
+    this.router.navigate(['edit'],{relativeTo: this.route ,queryParamsHandling: 'preserve'});//current route ekata sapekshawa edit walata yanawa
+  }
 }

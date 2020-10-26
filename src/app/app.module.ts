@@ -58,10 +58,17 @@ import { ServersService } from './routing-start/servers/servers.service';
 //routes danne approutes kiyana const ekakata,eka array ekak'rout object thama tyagena innnee
 const appRouts: Routes=[
   {path:'',component: HomeComponent},//localhost:4200/
-  {path:'servers',component: ServersComponent},//localhost:4200/servers
-  {path:'users',component: UsersComponent},//localhost:4200/users
-  {path:'users/:id/:name',component: UserComponent},
-  {path:'servers/:id/edit',component: EditServerComponent},//localhost:4200/users/something //:kiyanne dynamic ekak
+  //main route eken yana ewa tye nam ewa children routes eidiyata danna pluwan
+  {path:'servers',component: ServersComponent, children:[
+    {path:':id/edit',component: EditServerComponent},
+    {path:':id',component: ServerComponent}//children routes load karanna wenama 
+    //<router-outlet></router-outlet>ekak ona
+  ]},//localhost:4200/servers
+  {path:'users',component: UsersComponent, children:[
+    {path:':id/:name',component: UserComponent}
+  ]},//localhost:4200/users
+  //{path:'users/:id/:name',component: UserComponent},
+  //localhost:4200/users/something //:kiyanne dynamic ekak
 ];//mehema nikannma dammoth angular eka routes use karanne ne ignore karanawa
 //routes register karanna ona imports wala
 
