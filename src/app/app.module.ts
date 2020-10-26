@@ -57,6 +57,7 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 
 import { AppRoutingModule } from './app-routing.module';
+import { CanDeactivateGuard } from './routing-start/servers/edit-server/can-deactivate-guard.service';
 //aluthen add karana component serama module eke register karanna ona ethakota thama angular eka danaganne 
 //ehema component ekak thiyanawa kiyala
 
@@ -140,7 +141,8 @@ const appRouts: Routes=[
     ShoppingListService, 
     ServersService,
     AuthService,
-    AuthGuard],//service ekakata service ekak inject karanawa nam
+    AuthGuard,
+    CanDeactivateGuard],//service ekakata service ekak inject karanawa nam
   //inject karana service eka aniwa appmodule eke tyenna onaa
   bootstrap: [AppComponent]
 })

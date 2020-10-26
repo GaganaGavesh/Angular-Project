@@ -9,6 +9,7 @@ import { ServerComponent } from './routing-start/servers/server/server.component
 import { EditServerComponent } from './routing-start/servers/edit-server/edit-server.component';
 import { HomeComponent } from './routing-start/home/home.component';
 import { AuthGuard } from './auth-guard.service';
+import { CanDeactivateGuard } from './routing-start/servers/edit-server/can-deactivate-guard.service';
 
 const appRouts: Routes=[
     {path:'',component: HomeComponent},//localhost:4200/
@@ -18,7 +19,7 @@ const appRouts: Routes=[
     canActivateChild: [AuthGuard],//child routes witharai protect wenne
     component: ServersComponent, 
     children:[
-      {path:':id/edit',component: EditServerComponent},
+      {path:':id/edit',component: EditServerComponent, canDeactivate: [CanDeactivateGuard]},//Angular me guard eka run karanawa api me component eka leave wenna yanakota
       {path:':id',component: ServerComponent}//children routes load karanna wenama 
       //<router-outlet></router-outlet>ekak ona
     ]},//localhost:4200/servers
