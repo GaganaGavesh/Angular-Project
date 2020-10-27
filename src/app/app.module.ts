@@ -55,32 +55,36 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { ServersService } from './routing-start/servers/servers.service';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
+import { ServerResolver } from './routing-start/servers/server/server-resolver.service';
 
-import { AppRoutingModule } from './app-routing.module';
+import { RecipeRouting } from './recipe-routing.module';
+//import { AppRoutingModule } from './app-routing.module';
 import { CanDeactivateGuard } from './routing-start/servers/edit-server/can-deactivate-guard.service';
+import { ErrorPageComponent } from './routing-start/error-page/error-page.component';
+import { importExpr } from '@angular/compiler/src/output/output_ast';
 //aluthen add karana component serama module eke register karanna ona ethakota thama angular eka danaganne 
 //ehema component ekak thiyanawa kiyala
 
 //routes danne approutes kiyana const ekakata,eka array ekak'rout object thama tyagena innnee
-const appRouts: Routes=[
-  {path:'',component: HomeComponent},//localhost:4200/
-  //main route eken yana ewa tye nam ewa children routes eidiyata danna pluwan
-  {path:'servers',component: ServersComponent, children:[
-    {path:':id/edit',component: EditServerComponent},
-    {path:':id',component: ServerComponent}//children routes load karanna wenama 
-    //<router-outlet></router-outlet>ekak ona
-  ]},//localhost:4200/servers
-  {path:'users',component: UsersComponent, children:[
-    {path:':id/:name',component: UserComponent}
-  ]},//localhost:4200/users
-  //{path:'users/:id/:name',component: UserComponent},
-  //localhost:4200/users/something //:kiyanne dynamic ekak
-  {path:'not-found',component: PageNotFoundComponent},
-  {path:'**', redirectTo: '/not-found'},//component ekak load karanne nathuwa route ekakata re direct karanawa
-  // ** dammama all false routes allagannnawa ewa not found ekata redirect karanawa
-  //me route eka aniw antimatama thama enna ona//udinma dala thibboth meka issella run wela wena eka page ekakatawath yanna bari wenawa
-];//mehema nikannma dammoth angular eka routes use karanne ne ignore karanawa
-//routes register karanna ona imports wala
+// const appRouts: Routes=[
+//   {path:'',component: HomeComponent},//localhost:4200/
+//   //main route eken yana ewa tye nam ewa children routes eidiyata danna pluwan
+//   {path:'servers',component: ServersComponent, children:[
+//     {path:':id/edit',component: EditServerComponent},
+//     {path:':id',component: ServerComponent}//children routes load karanna wenama 
+//     //<router-outlet></router-outlet>ekak ona
+//   ]},//localhost:4200/servers
+//   {path:'users',component: UsersComponent, children:[
+//     {path:':id/:name',component: UserComponent}
+//   ]},//localhost:4200/users
+//   //{path:'users/:id/:name',component: UserComponent},
+//   //localhost:4200/users/something //:kiyanne dynamic ekak
+//   {path:'not-found',component: PageNotFoundComponent},
+//   {path:'**', redirectTo: '/not-found'},//component ekak load karanne nathuwa route ekakata re direct karanawa
+//   // ** dammama all false routes allagannnawa ewa not found ekata redirect karanawa
+//   //me route eka aniw antimatama thama enna ona//udinma dala thibboth meka issella run wela wena eka page ekakatawath yanna bari wenawa
+// ];//mehema nikannma dammoth angular eka routes use karanne ne ignore karanawa
+// //routes register karanna ona imports wala
 
 @NgModule({
   declarations: [
@@ -120,14 +124,16 @@ const appRouts: Routes=[
     UsersComponent,
     EditServerComponent,
     UserComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ErrorPageComponent
 
     
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    //AppRoutingModule,
+    RecipeRouting
     //RouterModule.forRoot(appRouts)//ain kala routes tika wena ekakata genichcha nisa
     //routing functionality eka add kalata thama eka register wela ne
     //eka karanne forRoot eken.mulu app ekatama route enable wenawa ethakota
@@ -142,7 +148,8 @@ const appRouts: Routes=[
     ServersService,
     AuthService,
     AuthGuard,
-    CanDeactivateGuard],//service ekakata service ekak inject karanawa nam
+    CanDeactivateGuard,
+    ServerResolver],//service ekakata service ekak inject karanawa nam
   //inject karana service eka aniwa appmodule eke tyenna onaa
   bootstrap: [AppComponent]
 })
