@@ -1,6 +1,13 @@
-<a  href="#" 
-    class="list-group-item clearfix"
-    (click)="onSelected()">
+<!-- href="#" kiyana eken thama server ekata request karanne eka ain kalama e request eka yanne ne
+Refresh wenne ne-->
+<!-- 
+    (click)="onSelected()" ain kala routing dana nisa -->
+    <!--[routerLink] mekata dammama router link ekataappend wenawa index eka  -->
+<a
+    [routerLink]="['/recipes',index]"
+    routerLinkActive="active"
+    style="cursor: pointer;"
+    class="list-group-item clearfix">
 
      <div class="pull-left">
         <!-- String interpolation eken thama data bind karanne -->

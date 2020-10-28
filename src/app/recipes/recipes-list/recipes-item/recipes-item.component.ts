@@ -9,19 +9,21 @@ import { RecipeService } from '../../recipe.service';
 })
 export class RecipesItemComponent implements OnInit {
   @Input() recipe: Recipe;
+  @Input() index: number;
   //@Output() recipeSelected = new EventEmitter<void>();
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
   }
 
-  onSelected(){
-    //this.recipeSelected.emit();//event emit kalama meken parent ekata eken eke parent yanna ona
-    //eka diga process ekak,so recipe service eka use karanna hadanne.eken lesiyenma centralize 
-    //karanna pluwn me long process eka
+  //routing dana njisa
+  // onSelected(){
+  //   //this.recipeSelected.emit();//event emit kalama meken parent ekata eken eke parent yanna ona
+  //   //eka diga process ekak,so recipe service eka use karanna hadanne.eken lesiyenma centralize 
+  //   //karanna pluwn me long process eka
 
-    //recipe service ekekn evint emit karanna emit method call eka
-    this.recipeService.recipeSelected.emit(this.recipe);
-  }
+  //   //recipe service ekekn evint emit karanna emit method call eka
+  //   this.recipeService.recipeSelected.emit(this.recipe);
+  // }
 
 }
