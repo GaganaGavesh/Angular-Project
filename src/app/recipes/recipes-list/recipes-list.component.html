@@ -2,7 +2,7 @@
 <div class="row">
     <!-- recipe eke clo-md-5 kiyana column eke row eka thama me tynne -->
     <div class="col-xs-12">
-        <button class="btn btn-success">New recipe</button>
+        <button class="btn btn-success" (click)="onNewRecipe()">New recipe</button>
     </div>
 </div>
 <hr>
@@ -18,8 +18,9 @@
         
         <!-- Recipe Service ekekn -->
         <app-recipes-item 
-        *ngFor="let recipeElement of recipes" 
-        [recipe]="recipeElement"></app-recipes-item>
+        *ngFor="let recipeElement of recipes; let i = index" 
+        [recipe]="recipeElement"
+        [index]="i"></app-recipes-item>
     </div>
     
 </div>

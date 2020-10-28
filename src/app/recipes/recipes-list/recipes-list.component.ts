@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 
 import {Recipe} from '../recipe.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipes-list',
@@ -42,7 +43,7 @@ export class RecipesListComponent implements OnInit {
   //event emitter use karanawa nam
   //@Output() recipeWasSelected = new EventEmitter<Recipe>();
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(){
     this.recipes = this.recipeService.getRecipes();
@@ -53,4 +54,7 @@ export class RecipesListComponent implements OnInit {
   //   this.recipeWasSelected.emit(recipe);
   // }
 
+  onNewRecipe(){
+    this.router.navigate(['new'],{relativeTo: this.route});
+  }
 }
