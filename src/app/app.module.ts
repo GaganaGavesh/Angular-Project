@@ -42,7 +42,8 @@ import { EditServerComponent } from './routing-start/servers/edit-server/edit-se
 import { UserComponent } from './routing-start/users/user/user.component';
 import { ServiceDependencyInjectionComponent } from './service-dependency-injection/service-dependency-injection.component';
 import { PageNotFoundComponent } from './routing-start/page-not-found/page-not-found.component';
-
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 //routing start
 import { ServersComponent } from './routing-start/servers/servers.component';
@@ -62,6 +63,8 @@ import { RecipeRouting } from './recipe-routing.module';
 import { CanDeactivateGuard } from './routing-start/servers/edit-server/can-deactivate-guard.service';
 import { ErrorPageComponent } from './routing-start/error-page/error-page.component';
 import { importExpr } from '@angular/compiler/src/output/output_ast';
+
+
 //aluthen add karana component serama module eke register karanna ona ethakota thama angular eka danaganne 
 //ehema component ekak thiyanawa kiyala
 
@@ -125,7 +128,9 @@ import { importExpr } from '@angular/compiler/src/output/output_ast';
     EditServerComponent,
     UserComponent,
     PageNotFoundComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    RecipeStartComponent,
+    RecipeEditComponent
 
     
   ],
