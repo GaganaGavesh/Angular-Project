@@ -9,11 +9,12 @@
         <app-recipes-list></app-recipes-list>
     </div>
     <div class="col-md-7">
-        <app-recipes-detail
+        <router-outlet></router-outlet>
+        <!-- <app-recipes-detail
         *ngIf="selectedRecipe; else inforText"
         [selectedRecipeDetail]="selectedRecipe"></app-recipes-detail>
         <ng-template #inforText>
             <p>Please select a Recipe..!</p>
-        </ng-template>
+        </ng-template> -->
     </div>
 </div>
