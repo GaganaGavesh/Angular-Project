@@ -7,10 +7,17 @@ import { RecipesListComponent } from './recipes/recipes-list/recipes-list.compon
 import { RecipesDetailComponent } from './recipes/recipes-detail/recipes-detail.component';
 import { RecipesItemComponent } from './recipes/recipes-list/recipes-item/recipes-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 const appRoutes: Routes = [
     {path: '', redirectTo: '/recipes', pathMatch: 'full'},
-    {path: 'recipes', component: RecipesComponent},
+    {path: 'recipes', component: RecipesComponent, children: [
+        {path: '', component: RecipeStartComponent},//recipe component eka athule thama pennanne
+        {path: 'new', component: RecipeEditComponent},
+        {path: ':id', component: RecipesDetailComponent},
+        {path: ':id/edit', component: RecipeEditComponent},
+    ]},
     {path: 'shopping-list', component: ShoppingListComponent},
 ];
 
