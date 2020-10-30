@@ -49,4 +49,10 @@ export class ShoppingListService{
       this.ingredientsChanged.next(this.ingredients.slice());
     }
 
+    deleteIngredient(index: number){
+      this.ingredients.splice(index,1);//ingredients array eken me index eka tyna eka element ekak ain karanawa 
+      this.ingredientsChanged.next(this.ingredients.slice());//deletion eken ingredient change wena nisa aye refactor
+      //karanna ona ekata meka danne
+    }
+
 }

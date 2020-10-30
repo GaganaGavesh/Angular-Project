@@ -74,6 +74,12 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     this.editMode = false;
   }
 
+  onDelete(){
+    this.shoppingListService.deleteIngredient(this.editedItemIndex);//edit karanna gaththa eke index eka gannawa
+    this.onClear();
+    this.editMode = false;
+  }
+
   ngOnDestroy(){
     this.subscription.unsubscribe();//memory leak perevent karanawa 
     //unsubscribe karala thibbama sigatama eka tynawa
