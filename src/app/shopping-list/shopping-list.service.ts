@@ -6,6 +6,8 @@ import { Subject, Subscription } from 'rxjs';
 export class ShoppingListService{
     //ingredientsChanged = new EventEmitter<Ingredient[]>();
     ingredientsChanged = new Subject<Ingredient[]>();//event emiter eka wagema subject ekath ganna pluwn 
+    startedEditing = new Subject<number>();
+
     private igChangeSub: Subscription;
     private ingredients: Ingredient[] = [
     
@@ -14,6 +16,10 @@ export class ShoppingListService{
 
     getIngredients(){
         return this.ingredients;
+    }
+
+    getingredient(index: number){
+      return this.ingredients[index];
     }
     
     onIngredientAdded(ingredient: Ingredient){
@@ -33,6 +39,14 @@ export class ShoppingListService{
         //this.ingredientsChanged.emit(this.ingredients.slice()) //event emitter eken
         this.ingredientsChanged.next(this.ingredients.slice())//subject
 
+    }
+
+    //ingredient update kalama ekatama update eka wadinawa aluth list eka ingredient change event emitter ekata
+    //danawa ingredient change una nisa
+    //e nisa meka aye row ekakata enne ne
+    updateIngredient(index: number,newingredient: Ingredient){
+      this.ingredients[index] = newingredient;
+      this.ingredientsChanged.next(this.ingredients.slice());
     }
 
 }
