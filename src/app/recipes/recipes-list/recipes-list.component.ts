@@ -46,6 +46,11 @@ export class RecipesListComponent implements OnInit {
   constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(){
+    this.recipeService.recipesChanged.subscribe(
+      (recipe: Recipe[])=>{
+        this.recipes = recipe;
+      }// emit karanne recipe array ekak eka gannawa aragena meke array ekata dala loop through karanawa
+    )
     this.recipes = this.recipeService.getRecipes();
   }
 
