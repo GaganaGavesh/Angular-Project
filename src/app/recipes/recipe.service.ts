@@ -7,7 +7,7 @@ import { Subject} from 'rxjs';
 
 @Injectable()//recipe service eken shopping list service eka call karanwa
 export class RecipeService{
-
+    recipesChanged = new Subject<Recipe[]>();
     //recipeSelected = new EventEmitter<Recipe>();
     recipeSelected = new Subject<Recipe>();
     
@@ -64,4 +64,15 @@ export class RecipeService{
       getRecipe(index: number){
         return this.recipes[index];
       }
+
+    addRecipe(recipe: Recipe){
+        this.recipes.push(recipe);
+        this.recipesChanged.next(this.recipes.slice());
+    }
+
+    updateRecipe(index: number,newRecipe: Recipe){
+        this.recipes[index] = newRecipe;
+        this.recipesChanged.next(this.recipes.slice());
+    }
+
 }
