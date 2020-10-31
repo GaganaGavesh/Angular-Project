@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -137,6 +137,7 @@ import { importExpr } from '@angular/compiler/src/output/output_ast';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     //AppRoutingModule,
     RecipeRouting
     //RouterModule.forRoot(appRouts)//ain kala routes tika wena ekakata genichcha nisa
