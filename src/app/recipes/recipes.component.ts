@@ -5,9 +5,10 @@ import { RecipeService } from './recipe.service';
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
-  styleUrls: ['./recipes.component.css'],
-  providers: [RecipeService]//me component eke and meke child components wala RecipeService
+  styleUrls: ['./recipes.component.css']
+  //providers: [RecipeService]//me component eke and meke child components wala RecipeService
   //eke same instance eka use karanna pluwan
+  //MEKEN PITA COMPONENT EKAKATA GYAMA ME INSTANCE EKA NATHI WENAWA
 })
 export class RecipesComponent implements OnInit {
 
