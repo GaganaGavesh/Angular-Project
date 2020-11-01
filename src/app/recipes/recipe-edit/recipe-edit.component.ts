@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../recipe.model';
 
 import { RecipeService } from '../recipe.service';
@@ -17,7 +17,10 @@ export class RecipeEditComponent implements OnInit {
   recipeForm: FormGroup;
   
   //route eken id eka ganna activated route eka inject karaanawa
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private recipeService: RecipeService,
+    private router: Router) { }
   
   //route eken id eka gannawa navigate karala tyna nisa edit ekata enawa
   ngOnInit(){
@@ -51,6 +54,7 @@ export class RecipeEditComponent implements OnInit {
     }else{
       this.recipeService.addRecipe(this.recipeForm.value);
     }
+    this.onCancel();//save kalamath on cancel eke tyna widiyata navigate wenawa
     console.log(this.recipeForm);
   }
 
@@ -101,7 +105,13 @@ export class RecipeEditComponent implements OnInit {
     });
     
   }
-
   
+  onCancel(){
+    this.router.navigate(['../'],{relativeTo: this.route});
+  }
 
+  onDeleteingredient(index: number){
+    (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);//Remove the control at the given index in the array.
+    //me index eken render una control eka ain karanawa 
+  }
 }
