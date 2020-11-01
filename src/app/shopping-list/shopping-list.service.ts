@@ -1,9 +1,9 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, OnDestroy } from '@angular/core';
 import {Ingredient} from '../shared/ingredient.model';
 
 import { Subject, Subscription } from 'rxjs';
 
-export class ShoppingListService{
+export class ShoppingListService implements OnDestroy{
     //ingredientsChanged = new EventEmitter<Ingredient[]>();
     ingredientsChanged = new Subject<Ingredient[]>();//event emiter eka wagema subject ekath ganna pluwn 
     startedEditing = new Subject<number>();
@@ -53,6 +53,11 @@ export class ShoppingListService{
       this.ingredients.splice(index,1);//ingredients array eken me index eka tyna eka element ekak ain karanawa 
       this.ingredientsChanged.next(this.ingredients.slice());//deletion eken ingredient change wena nisa aye refactor
       //karanna ona ekata meka danne
+    }
+
+    ngOnDestroy(){
+      this.ingredientsChanged.unsubscribe();//subscription eka digatama yana nisa component 
+      //eke leave wenakota eka ain karanawa
     }
 
 }
