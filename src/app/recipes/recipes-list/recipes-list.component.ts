@@ -1,16 +1,17 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 
 import {Recipe} from '../recipe.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recipes-list',
   templateUrl: './recipes-list.component.html',
   styleUrls: ['./recipes-list.component.css']
 })
-export class RecipesListComponent implements OnInit {
+export class RecipesListComponent implements OnInit, OnDestroy {
   //recipes kiyanne variable ekak eke type eka thama Recipe
   //e kiyannne mm kalin hadapu recipe modele eke tyna class eke obi eke type eka
   //methana thama apata ona obj eka create karanne constructor ekata data yawala
@@ -39,19 +40,22 @@ export class RecipesListComponent implements OnInit {
   // ];
 
   recipes: Recipe[] = [];
-
+  subscription: Subscription;
   //event emitter use karanawa nam
   //@Output() recipeWasSelected = new EventEmitter<Recipe>();
 
-  constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    private recipeService: RecipeService, 
+    private router: Router, 
+    private route: ActivatedRoute) { }
 
   ngOnInit(){
-    this.recipeService.recipesChanged.subscribe(
+    this.recipes = this.recipeService.getRecipes();
+    this.subscription = this.recipeService.recipesChanged.subscribe(
       (recipe: Recipe[])=>{
         this.recipes = recipe;
       }// emit karanne recipe array ekak eka gannawa aragena meke array ekata dala loop through karanawa
     )
-    this.recipes = this.recipeService.getRecipes();
   }
 
   //event emitter use karana coee eka
@@ -61,5 +65,9 @@ export class RecipesListComponent implements OnInit {
 
   onNewRecipe(){
     this.router.navigate(['new'],{relativeTo: this.route});
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();//memory leaks athi wenne nathi wenna thama mehema danne
   }
 }
