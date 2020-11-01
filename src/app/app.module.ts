@@ -51,6 +51,7 @@ import { ServerComponent } from './routing-start/servers/server/server.component
 
 import { AccountsService } from './service-dependency-injection/accounts.service';
 import { LoggingService } from './service-dependency-injection/logging.service';
+import { RecipeService } from './recipes/recipe.service';
 import { CounterService } from './services-dependency-injection-assignment/counter.service';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { ServersService } from './routing-start/servers/servers.service';
@@ -150,6 +151,7 @@ import { importExpr } from '@angular/compiler/src/output/output_ast';
     AccountsService, 
     LoggingService, 
     CounterService, 
+    RecipeService,//app eka run wenakanma eka RecipeService instance ekak thama tynne
     ShoppingListService, 
     ServersService,
     AuthService,
