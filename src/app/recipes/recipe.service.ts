@@ -49,21 +49,21 @@ export class RecipeService{
 
       }
 
-      getRecipes(){
+    getRecipes(){
           return this.recipes.slice();//exact copy ekak denne recipes array eke
           //array kiyanne reference type ekak so ewa object widiyata denne ne
           //reference ekak widiyata thama denne
           //slice kiyala dammama apita kohomawath recipes array eka access karanna be
           //copy ekama witharai access karanna pluwan
-      }
+    }
 
-      addIngredientsToShoppingList(ingredients: Ingredient[]){
+    addIngredientsToShoppingList(ingredients: Ingredient[]){
         this.shoppingListService.addIngredients(ingredients);
-      }
+    }
 
-      getRecipe(index: number){
+    getRecipe(index: number){
         return this.recipes[index];
-      }
+    }
 
     addRecipe(recipe: Recipe){
         this.recipes.push(recipe);
@@ -72,6 +72,11 @@ export class RecipeService{
 
     updateRecipe(index: number,newRecipe: Recipe){
         this.recipes[index] = newRecipe;
+        this.recipesChanged.next(this.recipes.slice());
+    }
+
+    deleteRecipe(index: number){
+        this.recipes.splice(index, 1);//recipe array eken me index eka tyna ekaa ain karanawa
         this.recipesChanged.next(this.recipes.slice());
     }
 
