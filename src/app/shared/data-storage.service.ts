@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { Recipe } from '../recipes/recipe.model';
 import { RecipeService } from '../recipes/recipe.service';
@@ -28,19 +28,24 @@ export class DataStoregeService{
 
     fetchRecipies(){
         //get eken eliyata enne Recipe[] type ekak kiyanna thama <Recipe[]> dala tynne
-        this.http.get<Recipe[]>('https://recipe-book-3f067.firebaseio.com/recipes.json')
+        return this.http.get<Recipe[]>('https://recipe-book-3f067.firebaseio.com/recipes.json')
         .pipe(map(recipies=>{//me map eka rxjs operator eka pipe eka athule dana
             return recipies.map(recipe=>{//me map eka javascript ekak array ekak map karanna pluwn apata ona widiyata element transfer karala
                 return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
                 //firebase ekata yana recipe eke ingredients nathnam eka empty array ekak widiyata yawanawa
                 //ehema yawwe nathnam ingredient kiyana priperty eka recipe object ekata save wenne ne
             });
-        }))
-        .subscribe(
-            (recipies)=>{
-                console.log(recipies);
-                this.recipesService.setRecipies(recipies)
-            }
-        );
+        }),
+        tap(recipes=>{
+            this.recipesService.setRecipies(recipes);
+        })//tap kiyana eka allow karanawa apata code ekak run karanna observable eke data walata aulak wenne nathuwa
+        // .subscribe(
+        //     (recipies)=>{
+        //         console.log(recipies);
+        //         this.recipesService.setRecipies(recipies)
+        //     }
+        // );
+        )
+        
     }
 }
