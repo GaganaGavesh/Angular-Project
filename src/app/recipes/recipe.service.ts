@@ -13,36 +13,36 @@ export class RecipeService{
     
     private recipes: Recipe[] = [
         
-        new Recipe('A test Recipe 1', 
-                    'This is simply a test 1', 
-                    'assets/coffee.jpg',
-                    [
-                        new Ingredient('Coffee Bags',2),
-                        new Ingredient('Coffee Bags',2),
-                        new Ingredient('Coffee Bags',2),
-                        new Ingredient('Coffee Bags',2)
-                    ]),
+        // new Recipe('A test Recipe 1', 
+        //             'This is simply a test 1', 
+        //             'assets/coffee.jpg',
+        //             [
+        //                 new Ingredient('Coffee Bags',2),
+        //                 new Ingredient('Coffee Bags',2),
+        //                 new Ingredient('Coffee Bags',2),
+        //                 new Ingredient('Coffee Bags',2)
+        //             ]),
     
-        new Recipe('A test Recipe 2', 
-                   'This is simply a test 2', 
-                   'assets/karapincha.jpg',
-                   [
-                       new Ingredient('Curry leaves',25)
-                   ]),
+        // new Recipe('A test Recipe 2', 
+        //            'This is simply a test 2', 
+        //            'assets/karapincha.jpg',
+        //            [
+        //                new Ingredient('Curry leaves',25)
+        //            ]),
     
-        new Recipe('A test Recipe 3', 
-                   'This is simply a test 3', 
-                   'assets/item3.jpg',
-                   [
-                       new Ingredient('Coconut shells',25)
-                   ]),
+        // new Recipe('A test Recipe 3', 
+        //            'This is simply a test 3', 
+        //            'assets/item3.jpg',
+        //            [
+        //                new Ingredient('Coconut shells',25)
+        //            ]),
     
-        new Recipe('A test Recipe 4', 
-                   'This is simply a test 4', 
-                   'assets/item4.webp',
-                   [
-                       new Ingredient('Cinnamon',2)
-                   ])
+        // new Recipe('A test Recipe 4', 
+        //            'This is simply a test 4', 
+        //            'assets/item4.webp',
+        //            [
+        //                new Ingredient('Cinnamon',2)
+        //            ])
       ];
 
       constructor(private shoppingListService: ShoppingListService){
@@ -77,6 +77,11 @@ export class RecipeService{
 
     deleteRecipe(index: number){
         this.recipes.splice(index, 1);//recipe array eken me index eka tyna ekaa ain karanawa
+        this.recipesChanged.next(this.recipes.slice());
+    }
+
+    setRecipies(recipes: Recipe[]){
+        this.recipes = recipes;
         this.recipesChanged.next(this.recipes.slice());
     }
 
