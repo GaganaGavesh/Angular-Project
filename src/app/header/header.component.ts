@@ -20,4 +20,8 @@ export class HeaderComponent{
 
     }
 
+    onFetchdata(){
+        this.dataStorageService.fetchRecipies();
+    }
+
 }
