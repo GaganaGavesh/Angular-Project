@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 //for server
@@ -139,6 +140,7 @@ import { importExpr } from '@angular/compiler/src/output/output_ast';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,//dan me httpClient service eka ona thanakata inject karanna pluwan
     //AppRoutingModule,
     RecipeRouting
     //RouterModule.forRoot(appRouts)//ain kala routes tika wena ekakata genichcha nisa
