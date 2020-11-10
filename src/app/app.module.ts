@@ -45,6 +45,7 @@ import { ServiceDependencyInjectionComponent } from './service-dependency-inject
 import { PageNotFoundComponent } from './routing-start/page-not-found/page-not-found.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { AuthComponent } from './auth/auth.component';
 
 //routing start
 import { ServersComponent } from './routing-start/servers/servers.component';
@@ -65,6 +66,7 @@ import { RecipeRouting } from './recipe-routing.module';
 import { CanDeactivateGuard } from './routing-start/servers/edit-server/can-deactivate-guard.service';
 import { ErrorPageComponent } from './routing-start/error-page/error-page.component';
 import { importExpr } from '@angular/compiler/src/output/output_ast';
+
 
 
 //aluthen add karana component serama module eke register karanna ona ethakota thama angular eka danaganne 
@@ -132,7 +134,8 @@ import { importExpr } from '@angular/compiler/src/output/output_ast';
     PageNotFoundComponent,
     ErrorPageComponent,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    AuthComponent
 
     
   ],
