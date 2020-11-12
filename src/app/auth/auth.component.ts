@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AuthComponent implements OnInit {
 
-  isLoginMode = true;
+  isLoginMode = true; //Change the sign Up & login States 
 
   constructor() { }
 
