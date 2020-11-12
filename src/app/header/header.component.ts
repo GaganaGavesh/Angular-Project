@@ -15,11 +15,13 @@ export class HeaderComponent{
         //this.featureSelected.emit(feature);
     }
 
+    //fires the firebase request 
     onSavedata(){
         this.dataStorageService.storeRecipies();
 
     }
 
+    //fires the firebase request 
     onFetchdata(){
         this.dataStorageService.fetchRecipies().subscribe();
     }
