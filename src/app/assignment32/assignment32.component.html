@@ -4,7 +4,7 @@
 <p *ngIf="showSecret">Secret data is showing</p>
 <div 
     *ngFor="let item of log; let y = index"
-    [ngStyle] = "{backgroundColor: y >= 4 ? 'blue' : 'transpatent'}"
+    [ngStyle] = "{backgroundColor: y >= 4 ? 'blue' : 'red'}"
     [ngClass] = "{whiteNumbers : y >= 4}">
     {{ item }}
 </div>
