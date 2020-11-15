@@ -7,7 +7,7 @@ export class AuthService{
             (resolve, reject)=>{
                 setTimeout(()=>{
                     resolve(this.loggedIn);
-                },1000);
+                },800);
             }
         )
         return promise;//authonticated nam promise eka return karanawa
