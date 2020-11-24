@@ -1,6 +1,7 @@
 //This service is for sign users in and up, Manage the token
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { StringMapWithRename } from '@angular/compiler/src/compiler_facade_interface';
 
 //responce data wala contain wenne me interface eke tyna data tika kiyala POST request 1ta danna thama meka haduwe
 interface AuthResponseData{
@@ -20,7 +21,7 @@ interface AuthResponseData{
 export class AuthService {
     constructor(private http : HttpClient){}
 
-    signUp(){
+    signUp(email: String, password: String){
         //post request ekak nisa data tika attach karanna ona 
 
         //POST EKEN ENA OBSERVABLE EKA RETURN KARANAWA ETHAKOTA ONA THANAKADI MEKE STATE EKA DANAGANNA AHAKI
@@ -30,14 +31,13 @@ export class AuthService {
         //e tika hariyatama mehemai kiyala interface ekak hadala , me type eke responce ekak thama aniwa enne kiyala 
         //kiyanawa
        return this.http.post<AuthResponseData>
-       ('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[AIzaSyBeNFjlXDZ7YT8VCJNrYh5VKynXft3KZ0Y]',
-    //    'Content-Type: application/json',
-    //         {
-    //             email: email,
-    //             password: password,
-    //             returnSecureToken: true
-    //         }
-        {"email":"[user@example.com]","password":"[PASSWORD]","returnSecureToken":true}
+       ('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBeNFjlXDZ7YT8VCJNrYh5VKynXft3KZ0Y',
+      
+            {
+                email: email,
+                password: password,
+                returnSecureToken: true
+            }
         );
     }
 }
