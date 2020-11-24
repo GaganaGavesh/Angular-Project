@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 export class AuthComponent implements OnInit {
 
   isLoginMode = true; //Change the sign Up & login States 
+  isLoading = false;//default loading ekaka nwei tynne, request eka send karanna gaththama loading true wenawa
 
   constructor(private authService: AuthService) { }
 
@@ -37,16 +38,20 @@ export class AuthComponent implements OnInit {
     const email = form.value.email
     const password = form.value.password;
 
+    this.isLoading = true;//methendi thema load wenna patangenne, response eka awama thama loading eka iwara wenne
+
     if(this.isLoginMode){
       //..... Thama nee
     }else{
       //signup method eken Observable ekak return karanawa eka signup method eka call wena thana subscribe karanna ona
       //nathnam POST eka yanne ne, kauruth resoponce eka gana unandu nathnam angular eka request eka yawann ne
-      this.authService.signUp().subscribe(
+      this.authService.signUp(email,password).subscribe(
         (resdata)=>{
+          this.isLoading = false;
           console.log(resdata);
         },
         (error)=>{
+          this.isLoading = false;
           console.log(error);
         }
       );
