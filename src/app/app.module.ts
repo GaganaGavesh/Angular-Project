@@ -46,6 +46,7 @@ import { PageNotFoundComponent } from './routing-start/page-not-found/page-not-f
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 //routing start
 import { ServersComponent } from './routing-start/servers/servers.component';
@@ -135,9 +136,8 @@ import { importExpr } from '@angular/compiler/src/output/output_ast';
     ErrorPageComponent,
     RecipeStartComponent,
     RecipeEditComponent,
-    AuthComponent
-
-    
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
