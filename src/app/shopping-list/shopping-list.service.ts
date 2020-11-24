@@ -1,4 +1,4 @@
-import { EventEmitter, OnDestroy } from '@angular/core';
+import { OnDestroy } from '@angular/core';
 import {Ingredient} from '../shared/ingredient.model';
 
 import { Subject, Subscription } from 'rxjs';
