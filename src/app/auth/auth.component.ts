@@ -12,6 +12,7 @@ export class AuthComponent implements OnInit {
 
   isLoginMode = true; //Change the sign Up & login States 
   isLoading = false;//default loading ekaka nwei tynne, request eka send karanna gaththama loading true wenawa
+  error: String = null;
 
   constructor(private authService: AuthService) { }
 
@@ -50,9 +51,13 @@ export class AuthComponent implements OnInit {
           this.isLoading = false;
           console.log(resdata);
         },
-        (error)=>{
+        (errorRes)=>{
+          switch(errorRes.error.error.message){
+            case 'EMAIL_EXISTS':
+              this.error = 'This email is already exists';
+          }
           this.isLoading = false;
-          console.log(error);
+          console.log(errorRes);
         }
       );
     }
