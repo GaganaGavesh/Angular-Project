@@ -19,6 +19,7 @@ export class AuthComponent implements OnInit {
     this.isLoginMode = !this.isLoginMode;
   }
 
+  //form eka ngForm type nisa thama mehema danne// eka import karanna ona
   onSubmit(form: NgForm){
     console.log(form.value);
     form.reset();
