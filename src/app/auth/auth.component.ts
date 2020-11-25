@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
 
-import { AuthService } from './auth.service';
+import { AuthService,AuthResponseData } from './auth.service';
+//AuthResponseData interface ekata export dapu nisa thama methana iport karanna pluwn une
 
 @Component({
   selector: 'app-auth',
@@ -39,31 +41,38 @@ export class AuthComponent implements OnInit {
     const email = form.value.email
     const password = form.value.password;
 
+    let authObs: Observable<AuthResponseData>; //me observable eke tynne AuthResponseData kiyana data 
+    //me Observable eka generic type ekak, e nisa api meke aththatama ena tika witharak dala AuthResponseData me type eka
+    //hadagena tynawa
+
     this.isLoading = true;//methendi thema load wenna patangenne, response eka awama thama loading eka iwara wenne
 
     if(this.isLoginMode){
-      //..... Thama nee
+      authObs = this.authService.login(email,password);
     }else{
       //signup method eken Observable ekak return karanawa eka signup method eka call wena thana subscribe karanna ona
       //nathnam POST eka yanne ne, kauruth resoponce eka gana unandu nathnam angular eka request eka yawann ne
-      this.authService.signUp(email,password).subscribe(
-        (resdata)=>{
-          this.isLoading = false;
-          console.log(resdata);
-        },
-        (errorRes)=>{
-          switch(errorRes.error.error.message){
-            case 'EMAIL_EXISTS':
-              this.error = 'This email is already exists';
-          }
-          this.isLoading = false;
-          console.log(errorRes);
-        }
-      );
+      authObs = this.authService.signUp(email,password);
     }
+    //methana if else walin login signup walin ena observable dagannawa authObs kiyana observable ekata
+    //itapassse e observable eka thama api yata subscribe karannee
+    //code eka repeat wena nisa thama meka dala tynne 
+    //authObs kiyana eka aniwa POST request eke response eke data tika ganna pluwn type ekakkama wenna onaa
+    authObs.subscribe(
+      (resdata)=>{
+        this.isLoading = false;
+        console.log(resdata);
+      },
+      //me observable eke tynne errorMessage eka witharai
+      //eka thama api methenta ganna ona
+      (errorMessage)=>{
+        this.error = errorMessage;
+        console.log(errorMessage);
+        this.isLoading = false;
+      }
+    );
 
-    console.log(form.value);
-    form.reset();
+    form.reset();//clear the form
   }
 
 }
