@@ -1,16 +1,19 @@
 //This service is for sign users in and up, Manage the token
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { StringMapWithRename } from '@angular/compiler/src/compiler_facade_interface';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';//aluth observable ekak create karanawa error eka wrap karala
+//rxjs aniwaryen observable ekak return karanawa
 
 //responce data wala contain wenne me interface eke tyna data tika kiyala POST request 1ta danna thama meka haduwe
-interface AuthResponseData{
-    //king: String;
+export interface AuthResponseData{
+    //export kiyala dammama witharai wena thanakata import karanna pluwan
     idToken: String;
     email: String;
     refreshToken: String;
     expiresIn: String;
     localId: String;
+    registered? : boolean;//registed kiyana eka optional handa thama ? dala tynne
 }
 
 
@@ -19,7 +22,7 @@ interface AuthResponseData{
 //mko Http Client kiyana service eka mekata ganna nisa
 //service ekakata service ekak inject karanakota aniwa @Injectable danna ona
 export class AuthService {
-    constructor(private http : HttpClient){}
+    constructor(private http : HttpClient){}//meka thama service eka
 
     signUp(email: String, password: String){
         //post request ekak nisa data tika attach karanna ona 
@@ -38,6 +41,52 @@ export class AuthService {
                 password: password,
                 returnSecureToken: true
             }
-        );
+        ).pipe(catchError(this.handleResponse));
+        //catch error eka error rka catch karagannawa 
+        //subscription eke error case ekata thama meka yannee
+        //observable eke tyna  me catch karana error rkata karana magul tika karala ayemath me observable ekatama wrap
+        //karanawa
+        //pipe kalama observable eka pipe wenawaa ekata thawa kali add karanna ahaki or wenas karanna ahaki ethakota 
+    }
+
+    login(email: String,password: String){
+        //meken enne observable ekak ekata kohedi hari subscribe karanna ona nathnam angular rka me POST request eka
+        //yawanne nee. me subscription eken component ekata wadagathkamak tyenam api component eke subscribe karanawa
+        //methenin me observable eka return karala
+        //nathnam methanama subscribe karanna ahaki
+        return this.http.post<AuthResponseData>//meken response eka enneth me type ekemmai eth registed eka meke aniwa tyenna ona
+        ('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBeNFjlXDZ7YT8VCJNrYh5VKynXft3KZ0Y',
+            {
+                email: email,
+                password: password,
+                returnSecureToken: true 
+            }).pipe(catchError(this.handleResponse));
+    }
+    //meken return karanne observable ekak
+    //eka thawa spesify karanawa me observable eken ena data "AuthResponseData" type ekee data thamai kiyala
+
+    private handleResponse(errorRes: HttpErrorResponse){
+        //ERROR HANDLING LOGIC
+        let errorMessage = 'A unknown error occured';
+            if(!errorRes.error || !errorRes.error.error){//errorRes ekee error key eka nathnam || errorRes eke nested error key nathnam
+                return throwError(errorMessage);
+                //throw an boservable (It is an error observable) and at the end it wraps tha errorMessage
+            }
+            switch(errorRes.error.error.message){
+                //error responce eke error.error.message kiyana ekata thama error rkr type eka enne 
+                //eka thama methana switch case eken allanne
+                case 'EMAIL_EXISTS':
+                    errorMessage = 'This email is already exists'
+                    break;
+                case 'EMAIL_NOT_FOUND':
+                    errorMessage = 'This email not found'
+                    break;
+                case 'INVALID_PASSWORD':
+                    errorMessage = 'Incorrect details, Please check your email and password'
+                    break;
+                    
+              }
+              return throwError(errorMessage);
+              //throw an boservable (It is an error observable) and at the end it wraps tha errorMessage
     }
 }
