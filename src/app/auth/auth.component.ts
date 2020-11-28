@@ -65,6 +65,7 @@ export class AuthComponent implements OnInit {
         console.log(resdata);
         this.router.navigate(['/recipes']);
         //login eka done unama thama me recipe ekata yanne
+        //response data enakota error ekata yanne nadda khdaa........... 
       },
       //me observable eke tynne errorMessage eka witharai
       //eka thama api methenta ganna ona
