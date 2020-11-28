@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { AuthService,AuthResponseData } from './auth.service';
@@ -16,7 +17,7 @@ export class AuthComponent implements OnInit {
   isLoading = false;//default loading ekaka nwei tynne, request eka send karanna gaththama loading true wenawa
   error: String = null;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -62,6 +63,8 @@ export class AuthComponent implements OnInit {
       (resdata)=>{
         this.isLoading = false;
         console.log(resdata);
+        this.router.navigate(['/recipes']);
+        //login eka done unama thama me recipe ekata yanne
       },
       //me observable eke tynne errorMessage eka witharai
       //eka thama api methenta ganna ona
