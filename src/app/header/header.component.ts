@@ -43,7 +43,9 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
     //fires the firebase request 
     onFetchdata(){
-        this.dataStorageService.fetchRecipies().subscribe();
+        this.dataStorageService.fetchRecipies().subscribe(res=>{},err=>{
+            console.log(err.error.error)
+        });
     }
 
     ngOnDestroy(){
