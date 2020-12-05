@@ -4,15 +4,21 @@ import { map, tap } from 'rxjs/operators';
 
 import { Recipe } from '../recipes/recipe.model';
 import { RecipeService } from '../recipes/recipe.service';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({providedIn: 'root'})//mokaka hari service ekak mekata ganna wa nam thama injectable danne
 //appModule eke providers eke danne nathiwa methana injectable eke object ekak widiyata danna plwan providers eke dana eka 
 export class DataStoregeService{
-    constructor(private http: HttpClient, private recipesService: RecipeService){
+    constructor(
+        private http: HttpClient, 
+        private recipesService: RecipeService, 
+        private authService: AuthService){
         //httpClient eka unlock kala app module eke
         //eka inject kala me data storage ekata
+        //authService eka gaththe user token eka request ekata ganna ona nisa
     }
-
+    //store karannath fetch karannath currently authenticted userge token eka ona
+    //ekata thama me authService eka dala gannahadanne token eka
     storeRecipies(){
         const recipies = this.recipesService.getRecipes();
         this.http.put('https://recipe-book-3f067.firebaseio.com/recipes.json',recipies).subscribe(
