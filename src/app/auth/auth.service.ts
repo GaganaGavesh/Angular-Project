@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError,tap } from 'rxjs/operators';
-import { Subject, throwError } from 'rxjs';//aluth observable ekak create karanawa error eka wrap karala
+import { BehaviorSubject, throwError } from 'rxjs';//aluth observable ekak create karanawa error eka wrap karala
 //rxjs aniwaryen observable ekak return karanawa
 
 import { User } from './user.model';
@@ -25,11 +25,27 @@ export interface AuthResponseData{
 //service ekakata service ekak inject karanakota aniwa @Injectable danna ona
 export class AuthService {
 
-    user = new Subject<User>();//aluth user emit karaanwaa, meka user ona wena thanakadi ganna ahaki
-    token :String = null;//me token eka initially null karala dala
+    //user = new Subject<User>();//aluth user emit karaanwaa, meka user ona wena thanakadi ganna ahaki
+    //token :String = null;//me token eka initially null karala dala
     //user emit unama e user token eka me token variable ekata daganna ahaki
     //dan karanna hadanne wenama approach ekak, eka tikak complex.
+    //uda user subject eka comment karala BehaviorSubject ekak danawa
 
+    user = new BehaviorSubject<User>(null);
+    //we can use next to emit values, and informed about new values by subscribing it
+    //SPECIAL IS....
+    //me behaviorSubject eka meka subscribe karala tyna ayata immediate access ekak denawa,
+    //kalin emit karapu value ekakata unath. Eka value eka emit wena welawe subscribe karala nothibunata aulak ma nee
+    //mko apita e emit una value eka apata ona welawaka access karanna pluwan meka behaviorSubject ekakin
+    //emit una nisa
+    //mwkata initial value ekak dendama ona aniwa..mekata null thama denne
+    //ona nam initial user kenek ge details dennath pluwan athi
+
+    //THE DIFFERENCE IS THAT BEHAVIORSUBJECT ALSO GIVES SUBSCRIBERS IMMEDIATE ACCESS TO THE PREVIOUSELY EMITTED
+    //VALUE EVEN IF THEY HAVE NOT SUBSCRIBED AT THE POINT OF TOMEE THAT VALUE WAS EMITTED.
+    //THAT MEANS WE CAN GET ACCESS TO THE CURRENTLY ACTIVE USER EVEN IF WE ONLY SUBSCRIBE AFTER THAT USER HAS BEEN EMITTED
+    //SO THIS MEANS, WHEN WE FETCH DATA AND WE NEED THAT TOKEN AT THIS POINT OOF TIME, EVEN IF THE USER LOGGED IN
+    //BEFORE THAT POINT OF TIME WHICH WILL HAVE BEEN THE CASE, WE GET ACCESS TO THAT LATEST USER.
 
     constructor(private http : HttpClient){}//meka thama service eka
 
