@@ -26,6 +26,8 @@ export interface AuthResponseData{
 export class AuthService {
 
     user = new Subject<User>();//aluth user emit karaanwaa, meka user ona wena thanakadi ganna ahaki
+    token
+
 
     constructor(private http : HttpClient){}//meka thama service eka
 
